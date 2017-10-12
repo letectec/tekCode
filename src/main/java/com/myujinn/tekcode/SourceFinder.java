@@ -31,13 +31,19 @@ class SourceFinder {
 
         if (filesInFolder == null) {
             LOGGER.error("Couldn't list folder " + sourcePath.toString());
+            return new ArrayList<>();  //returning empty list to not trip out pathList.addAll in case of recursion
         }
 
         for (File file : filesInFolder) {
-            if (file.isDirectory())
+            if (file.isDirectory() && '.' != file.getName().charAt(0)) {
                 pathList.addAll(findSourceFiles(file.toPath()));
-            else if (file.isFile() && ("c".equals(getFileExtension(file)) || "h".equals(getFileExtension(file))))
-                pathList.add(file.toPath());
+            }
+            else if (file.isFile()) {
+                if ("c".equals(getFileExtension(file)) || "h".equals(getFileExtension(file)))
+                    pathList.add(file.toPath());
+                else if (!"".equals(getFileExtension(file)))
+                    MistakePrinter.minor("O2 -- " + file.getName() + " is not a source file in your project.");
+            }
         }
 
         return pathList;

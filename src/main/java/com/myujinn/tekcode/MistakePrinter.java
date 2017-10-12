@@ -20,7 +20,7 @@ public class MistakePrinter {
     }
 
     public static void minor(String mistake) {
-        AnsiConsole.out.println(ansi().fg(RED).a("[ Minor ] " + mistake).reset());
+        AnsiConsole.out.println(ansi().fg(GREEN).a("[ Minor ] " + mistake).reset());
     }
 
     public static void info(String mistake, int line) {

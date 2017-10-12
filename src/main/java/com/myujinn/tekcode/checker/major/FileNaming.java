@@ -18,12 +18,24 @@ public class FileNaming {
         return fileName;
     }
 
+    public static boolean isSnakeCase(String string) {
+        if (!string.equals(string.toLowerCase()))
+            return false;
+
+        final char[] chars = string.toCharArray();
+
+        for (char c : chars) {
+            if (!Character.isLetterOrDigit(c) && c != '_')
+                return false;
+        }
+        return true;
+    }
+
     public static void check(File file) {
         final String fileName = removeExtension(file);
 
-        if (!fileName.equals(fileName.toLowerCase())) {
-            MistakePrinter.major(file.getName() + " is not following the snake_case convention.");
-            return;
+        if (!isSnakeCase(fileName)) {
+            MistakePrinter.major("O4 -- " + file.getName() + " is not following the snake_case convention.");
         }
     }
 }
