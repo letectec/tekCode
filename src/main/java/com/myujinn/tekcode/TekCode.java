@@ -1,5 +1,6 @@
 package com.myujinn.tekcode;
 
+import com.myujinn.tekcode.checker.FileAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +28,11 @@ class TekCode {
         checkArgs(args);
 
         List<Path> sourceFileList = SourceFinder.findSourceFiles(Paths.get(args[0]));
-        System.out.println(sourceFileList);
+
+        for (Path filePath : sourceFileList) {
+            FileAnalyzer fileAnalyzer = new FileAnalyzer(filePath.toFile());
+
+            fileAnalyzer.analyze();
+        }
     }
 }
