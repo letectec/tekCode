@@ -5,7 +5,7 @@ import com.myujinn.tekcode.MistakePrinter;
 import java.io.File;
 
 /**
- *  O4 - Checks the snake case convention on file names
+ *  O4 - snake_case convention on file names.
  */
 public class FileNaming {
 
@@ -13,17 +13,19 @@ public class FileNaming {
         String fileName = file.getName();
         int pos = fileName.lastIndexOf(".");
         if (pos > 0) {
-            fileName = fileName.substring(0, pos);
+            return fileName.substring(0, pos);
         }
         return fileName;
     }
 
     public static boolean isSnakeCase(String string) {
+        // checks uppercase letters
         if (!string.equals(string.toLowerCase()))
             return false;
 
+        // checks special chars, didn't use regex cuz too slow and not understandable code, might be
+        // dirty code but at least it's readable and reliable. feel free to improve here
         final char[] chars = string.toCharArray();
-
         for (char c : chars) {
             if (!Character.isLetterOrDigit(c) && c != '_')
                 return false;
@@ -32,10 +34,8 @@ public class FileNaming {
     }
 
     public static void check(File file) {
-        final String fileName = removeExtension(file);
-
-        if (!isSnakeCase(fileName)) {
-            MistakePrinter.major("O4 -- " + file.getName() + " is not following the snake_case convention.");
+        if (!isSnakeCase(removeExtension(file))) {
+            MistakePrinter.major("O4 -- File name is not following the snake_case convention.", file.getName());
         }
     }
 }

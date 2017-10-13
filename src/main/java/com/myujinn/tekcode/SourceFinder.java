@@ -39,10 +39,10 @@ class SourceFinder {
                 pathList.addAll(findSourceFiles(file.toPath()));
             }
             else if (file.isFile()) {
-                if ("c".equals(getFileExtension(file)) || "h".equals(getFileExtension(file)))
+                if ("c".equals(getFileExtension(file)))// || "h".equals(getFileExtension(file)))
                     pathList.add(file.toPath());
                 else if (!"".equals(getFileExtension(file)))
-                    MistakePrinter.minor("O2 -- " + file.getName() + " is not a source file in your project.");
+                    MistakePrinter.minor("O2 -- Is not a source file in your project.", file.getName());
             }
         }
 
