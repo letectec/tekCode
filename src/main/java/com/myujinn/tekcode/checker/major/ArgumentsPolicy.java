@@ -12,6 +12,20 @@ import java.util.List;
  */
 public class ArgumentsPolicy {
 
+    private static String getArguments(String functionDeclaration) {
+        return functionDeclaration.substring(functionDeclaration.indexOf("("),
+                functionDeclaration.lastIndexOf(")"));
+    }
+
+    private static int countArguments(String arguments) {
+        int argumentCount = 0;
+        for (int i = 0; i < arguments.length(); i++) {
+            if (arguments.charAt(i) == ',')
+                argumentCount++;
+        }
+        return argumentCount;
+    }
+
     public static void check(File file) {
         List<String> functionList = FunctionParser.getFunctionPrototypes(SourceFileReader.readFile(file));
 
@@ -19,10 +33,13 @@ public class ArgumentsPolicy {
             return;
 
         for (String functionDeclaration : functionList) {
-            String arguments = functionDeclaration.substring(functionDeclaration.indexOf("("), functionDeclaration.lastIndexOf(")") + 1);
+            String arguments = getArguments(functionDeclaration);
             if (arguments.contains("()"))
-                MistakePrinter.major("F5 -- Function " + functionDeclaration + " is not declared in the ISO/ANSI C syntax.", file.getName());
-            System.out.println(functionDeclaration);
+                MistakePrinter.major("F5 -- Function " + FunctionNaming.getFunctionName(functionDeclaration)
+                        + " is not declared in the ISO/ANSI C syntax.", file.getName());
+            if (countArguments(arguments) >= 4)
+                MistakePrinter.major("F5 -- Function " + FunctionNaming.getFunctionName(functionDeclaration)
+                        + " shouldn't have more than 4 arguments", file.getName());
         }
     }
 

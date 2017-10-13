@@ -5,6 +5,16 @@ import java.util.List;
 
 public class FunctionParser {
 
+    public static String removeWhitespaces(String string) {
+        int i = 0;
+        while (i < string.length()) {
+            if (string.charAt(i) != ' ' && string.charAt(i) != '\t')
+                break;
+            i++;
+        }
+        return string.substring(i);
+    }
+
     public static List<String> getFunctionPrototypes(List<String> fileContents) {
         List<String> prototypeList = new ArrayList<>();
 
@@ -13,6 +23,9 @@ public class FunctionParser {
 
         for (int i = 0; i < fileContents.size(); i++) {
             String line = fileContents.get(i);
+
+            //just in case function declaration is multiple lines
+            List<String> functionDeclarationList = new ArrayList<>();
 
             //entered a function because first character is a curly boi; a bit lazy but it works since other rules says to
             //put the curly boi on a new line so it will eventually be detected
@@ -26,11 +39,21 @@ public class FunctionParser {
                         break;
                     }
                     line = fileContents.get(j);
+                    functionDeclarationList.add(line);
                     j--;
                 } while (line.charAt(0) == '\t' || line.charAt(0) == ' '); //keep going if you encounter blankspace at char nb 0
 
                 if (line != null) {
-                    prototypeList.add(line);
+                    //reconstruct function declaration
+                    String function = "";
+                    int k = functionDeclarationList.size() - 1;
+
+                    do {
+                        function += removeWhitespaces(functionDeclarationList.get(k));
+                        k--;
+                    } while (k >= 0);
+
+                    prototypeList.add(function);
                 }
             }
         }

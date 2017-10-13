@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ public class FunctionNaming {
         return string.substring(i);
     }
 
-    private static String getFunctionName(String function) {
+    public static String getFunctionName(String function) {
         //removing args
         function = function.substring(0, function.indexOf('('));
 

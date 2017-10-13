@@ -6,25 +6,24 @@
 */
 #include <stdio.h>
 
-int		main()
+int		main(int lol, int lol, int lol, int lol)
 {
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	printf("Hello world!");
-	return 0;
-	return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
+  printf("Hello world!");
+  return 0;
 }

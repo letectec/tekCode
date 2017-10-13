@@ -2,6 +2,7 @@ package com.myujinn.tekcode.checker;
 
 import com.myujinn.tekcode.checker.major.*;
 import com.myujinn.tekcode.checker.minor.LineFunctionSeparation;
+import com.myujinn.tekcode.checker.minor.NoCommentsInFunctions;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ public class FileAnalyzer {
 
     private void analyzeMinorMistakes() {
         LineFunctionSeparation.check(file);
+        NoCommentsInFunctions.check(file);
     }
 
     private void analyzeMajorMistakes() {
@@ -24,6 +26,7 @@ public class FileAnalyzer {
         EightyColumns.check(file);
         TwentyLines.check(file);
         ArgumentsPolicy.check(file);
+        OneStatement.check(file);
     }
 
     private void analyzeInfoMistakes() {
