@@ -2,30 +2,14 @@ package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
 import com.myujinn.tekcode.parsing.SourceFileReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.List;
 
 /**
- *  F3 -- Length of a line shouldn't exceed 80 columns
+ *  F4 -- A function should not exceed 20 lines
  */
-public class EightyColumns {
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(EightyColumns.class);
-
-    private static int charactersToColumns(String string) {
-        int columns = 0;
-
-        for (int i = 0; i < string.length(); i++) {
-            if (string.charAt(i) == '\t')
-                columns += 7;
-            columns++;
-        }
-
-        return columns;
-    }
+public class TwentyLines {
 
     public static void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
@@ -34,6 +18,7 @@ public class EightyColumns {
             return;
 
         boolean inFunction = false;
+        int functionSize = 0;
 
         for (int i = 0; i < fileContents.size(); i++) {
             String line = fileContents.get(i);
@@ -42,12 +27,17 @@ public class EightyColumns {
             //put the curly boi on a new line so it will eventually be detected
             if (inFunction && line.length() == 1 && line.charAt(0) == '}') {
                 inFunction = false;
+                functionSize = 0;
             } else if (line.length() == 1 && line.charAt(0) == '{') {
                 inFunction = true;
-            } else if (inFunction && charactersToColumns(line) > 80) {
-                MistakePrinter.major("F3 -- Line is exceeding 80 columns.", file.getName(), i + 1);
+            } else if (inFunction) {
+                functionSize++;
             }
 
+            if (functionSize == 21)
+                MistakePrinter.major("F4 -- Function exceeding 20 lines.", file.getName(), i + 1);
+
         }
+
     }
 }

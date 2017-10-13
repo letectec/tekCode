@@ -1,6 +1,7 @@
 package com.myujinn.tekcode;
 
 import com.myujinn.tekcode.checker.FileAnalyzer;
+import com.myujinn.tekcode.parsing.SourceFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

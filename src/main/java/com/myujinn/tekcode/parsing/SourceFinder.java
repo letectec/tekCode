@@ -1,5 +1,6 @@
-package com.myujinn.tekcode;
+package com.myujinn.tekcode.parsing;
 
+import com.myujinn.tekcode.MistakePrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,23 +9,23 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-class SourceFinder {
+public class SourceFinder {
 
-    final static Logger LOGGER = LoggerFactory.getLogger(SourceFinder.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(SourceFinder.class);
 
-    static boolean isDirectory(String path) {
+    public static boolean isDirectory(String path) {
         return new File(path).isDirectory();
     }
 
     private static String getFileExtension(File file) {
-        String fileName = file.getName();
+        final String fileName = file.getName();
         if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
             return fileName.substring(fileName.lastIndexOf(".") + 1);
         return "";
     }
 
-    static List<Path> findSourceFiles(Path sourcePath) {
-        List<Path> pathList = new ArrayList<>();
+    public static List<Path> findSourceFiles(Path sourcePath) {
+        final List<Path> pathList = new ArrayList<>();
 
         final File folder = sourcePath.toFile();
         final File[] filesInFolder = folder.listFiles();
@@ -39,7 +40,7 @@ class SourceFinder {
                 pathList.addAll(findSourceFiles(file.toPath()));
             }
             else if (file.isFile()) {
-                if ("c".equals(getFileExtension(file)))// || "h".equals(getFileExtension(file)))
+                if ("c".equals(getFileExtension(file)))  // || "h".equals(getFileExtension(file)))
                     pathList.add(file.toPath());
                 else if (!"".equals(getFileExtension(file)))
                     MistakePrinter.minor("O2 -- Is not a source file in your project.", file.getName());

@@ -1,9 +1,6 @@
 package com.myujinn.tekcode.checker;
 
-import com.myujinn.tekcode.checker.major.EightyColumns;
-import com.myujinn.tekcode.checker.major.FileHeader;
-import com.myujinn.tekcode.checker.major.FileNaming;
-import com.myujinn.tekcode.checker.major.FunctionNaming;
+import com.myujinn.tekcode.checker.major.*;
 import com.myujinn.tekcode.checker.minor.LineFunctionSeparation;
 
 import java.io.File;
@@ -25,6 +22,8 @@ public class FileAnalyzer {
         FileHeader.check(file);
         FunctionNaming.check(file);
         EightyColumns.check(file);
+        TwentyLines.check(file);
+        ArgumentsPolicy.check(file);
     }
 
     private void analyzeInfoMistakes() {
