@@ -3,6 +3,7 @@ package com.myujinn.tekcode.checker;
 import com.myujinn.tekcode.checker.major.*;
 import com.myujinn.tekcode.checker.minor.LineFunctionSeparation;
 import com.myujinn.tekcode.checker.minor.NoCommentsInFunctions;
+import com.myujinn.tekcode.checker.minor.SpaceAfterKeyword;
 
 import java.io.File;
 
@@ -17,6 +18,7 @@ public class FileAnalyzer {
     private void analyzeMinorMistakes() {
         LineFunctionSeparation.check(file);
         NoCommentsInFunctions.check(file);
+        SpaceAfterKeyword.check(file);
     }
 
     private void analyzeMajorMistakes() {

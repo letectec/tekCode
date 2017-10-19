@@ -17,8 +17,7 @@ public class OneStatement {
 
         while (newString.contains(pattern)) {
             if (newString.indexOf(pattern) + pattern.length() < newString.length()) {
-                newString = newString.substring(string.indexOf(pattern) + pattern.length());
-                System.out.println(newString);
+                newString = newString.substring(newString.indexOf(pattern) + pattern.length());
                 counter++;
             }
         }
