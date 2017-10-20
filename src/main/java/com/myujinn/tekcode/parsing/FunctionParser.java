@@ -1,4 +1,4 @@
-package com.myujinn.tekcode;
+package com.myujinn.tekcode.parsing;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.myujinn.tekcode.checker.major;
 
-import com.myujinn.tekcode.FunctionParser;
+import com.myujinn.tekcode.parsing.FunctionParser;
 import com.myujinn.tekcode.MistakePrinter;
 import com.myujinn.tekcode.parsing.SourceFileReader;
 import org.slf4j.Logger;

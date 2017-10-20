@@ -2,6 +2,7 @@ package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
 import com.myujinn.tekcode.parsing.SourceFileReader;
+import com.myujinn.tekcode.parsing.SourcePurifier;
 
 import java.io.File;
 import java.util.List;
@@ -41,7 +42,7 @@ public class OneStatement {
             return;
 
         for (int i = 0; i < fileContents.size(); i++) {
-            String line = fileContents.get(i);
+            String line = SourcePurifier.purify(fileContents.get(i));
 
             //checking for all statement errors
             if (patternCounter(line, " = ") > 1)

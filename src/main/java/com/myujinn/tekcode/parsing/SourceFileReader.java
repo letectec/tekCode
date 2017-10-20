@@ -15,10 +15,6 @@ public class SourceFileReader {
     private static List<String> fileContents = null;
     private static File fileReference = null;
 
-    public static String purifyCStrings(String line) {
-        return line.replaceAll("\"[^\"]*\"", "");
-    }
-
     public static List<String> readFile(File file) {
         //simple buffer system, to not read the same file again
         if (fileReference == file)

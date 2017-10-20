@@ -2,6 +2,7 @@ package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
 import com.myujinn.tekcode.parsing.SourceFileReader;
+import com.myujinn.tekcode.parsing.SourcePurifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

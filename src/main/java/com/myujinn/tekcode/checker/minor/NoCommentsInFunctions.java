@@ -2,6 +2,7 @@ package com.myujinn.tekcode.checker.minor;
 
 import com.myujinn.tekcode.MistakePrinter;
 import com.myujinn.tekcode.parsing.SourceFileReader;
+import com.myujinn.tekcode.parsing.SourcePurifier;
 
 import java.io.File;
 import java.util.List;
@@ -20,7 +21,7 @@ public class NoCommentsInFunctions {
         boolean inFunction = false;
 
         for (int i = 0; i < fileContent.size(); i++) {
-            String line = fileContent.get(i);
+            String line = SourcePurifier.purifyStrings(fileContent.get(i));
 
             //entered a function because first character is a curly boi; a bit lazy but it works since other rules says to
             //put the curly boi on a new line so it will eventually be detected
