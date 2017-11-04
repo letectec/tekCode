@@ -6,9 +6,8 @@
 */
 #include <stdio.h>
 
-int		main(int lol, int lol, int lol, int lol)
+int	main(int lol)
 {
   printf("Hello world!");
-  return 0;
-  i = 0;
+  return ;
 }

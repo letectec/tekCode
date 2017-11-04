@@ -1,6 +1,7 @@
 package com.myujinn.tekcode.checker;
 
 import com.myujinn.tekcode.checker.major.*;
+import com.myujinn.tekcode.checker.minor.CurlyBrackets;
 import com.myujinn.tekcode.checker.minor.LineFunctionSeparation;
 import com.myujinn.tekcode.checker.minor.NoCommentsInFunctions;
 import com.myujinn.tekcode.checker.minor.SpaceAfterKeyword;
@@ -19,6 +20,7 @@ public class FileAnalyzer {
         LineFunctionSeparation.check(file);
         NoCommentsInFunctions.check(file);
         SpaceAfterKeyword.check(file);
+        CurlyBrackets.check(file);
     }
 
     private void analyzeMajorMistakes() {
