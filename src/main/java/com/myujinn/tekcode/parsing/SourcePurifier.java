@@ -26,6 +26,16 @@ public class SourcePurifier {
         return -1;
     }
 
+    public static String removeWhitespaces(String string) {
+        int i = 0;
+        while (i < string.length()) {
+            if (string.charAt(i) != ' ' && string.charAt(i) != '\t')
+                break;
+            i++;
+        }
+        return string.substring(i);
+    }
+
     public static String purifyStrings(String line) {
         return line.replaceAll("\"[^\"]*\"", "");
     }

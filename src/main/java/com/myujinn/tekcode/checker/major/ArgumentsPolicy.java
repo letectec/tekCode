@@ -1,5 +1,6 @@
 package com.myujinn.tekcode.checker.major;
 
+import com.myujinn.tekcode.checker.Rule;
 import com.myujinn.tekcode.parsing.FunctionParser;
 import com.myujinn.tekcode.MistakePrinter;
 import com.myujinn.tekcode.parsing.SourceFileReader;
@@ -10,14 +11,16 @@ import java.util.List;
 /**
  *  F5 -- Not more than 4 arguments, should be declared in ANSI C syntax
  */
-public class ArgumentsPolicy {
+public class ArgumentsPolicy extends Rule {
 
-    private static String getArguments(String functionDeclaration) {
+    private String name = this.getClass().getName();
+
+    private String getArguments(String functionDeclaration) {
         return functionDeclaration.substring(functionDeclaration.indexOf("("),
                 functionDeclaration.lastIndexOf(")"));
     }
 
-    private static int countArguments(String arguments) {
+    private int countArguments(String arguments) {
         int argumentCount = 0;
         for (int i = 0; i < arguments.length(); i++) {
             if (arguments.charAt(i) == ',')
@@ -26,7 +29,7 @@ public class ArgumentsPolicy {
         return argumentCount;
     }
 
-    public static void check(File file) {
+    public void check(File file) {
         List<String> functionList = FunctionParser.getFunctionPrototypes(SourceFileReader.readFile(file));
 
         if (functionList == null || functionList.isEmpty())

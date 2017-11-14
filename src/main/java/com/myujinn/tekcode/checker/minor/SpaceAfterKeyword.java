@@ -1,6 +1,7 @@
 package com.myujinn.tekcode.checker.minor;
 
 import com.myujinn.tekcode.MistakePrinter;
+import com.myujinn.tekcode.checker.Rule;
 import com.myujinn.tekcode.parsing.SourceFileReader;
 import com.myujinn.tekcode.parsing.SourcePurifier;
 
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  *  L3 -- Space after a keyword or operator
  */
-public class SpaceAfterKeyword {
+public class SpaceAfterKeyword extends Rule {
 
     /*
     * Yes there are missing operators and keywords.
@@ -51,7 +52,7 @@ public class SpaceAfterKeyword {
         }
     }
 
-    public static void check(File file) {
+    public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
 
         if (fileContents == null || fileContents.isEmpty())

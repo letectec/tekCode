@@ -1,6 +1,7 @@
 package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
+import com.myujinn.tekcode.checker.Rule;
 import com.myujinn.tekcode.parsing.SourceFileReader;
 import com.myujinn.tekcode.parsing.SourcePurifier;
 import org.slf4j.Logger;
@@ -12,9 +13,7 @@ import java.util.List;
 /**
  *  F3 -- Length of a line shouldn't exceed 80 columns
  */
-public class EightyColumns {
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(EightyColumns.class);
+public class EightyColumns extends Rule {
 
     private static int charactersToColumns(String string) {
         int columns = 0;
@@ -28,7 +27,7 @@ public class EightyColumns {
         return columns;
     }
 
-    public static void check(File file) {
+    public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
 
         if (fileContents == null)

@@ -28,8 +28,8 @@ class TekCode {
     void disclaimer() {
         System.out.println("-------------");
         System.out.println(" Disclaimer: ");
-        System.out.println(" tekCode is just a code checker. It CAN make mistakes. (and it will)");
-        System.out.println(" You can contribute to it instead of complaining.");
+        System.out.println(" tekCode is just an Epitech coding style checker. It CAN make mistakes. (and it will)");
+        System.out.println(" You can contribute on my GitHub if it does that too often.");
         System.out.println(" https://github.com/Myuujinn/tekCode");
         System.out.println("-------------");
     }

@@ -1,6 +1,7 @@
 package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
+import com.myujinn.tekcode.checker.Rule;
 import com.myujinn.tekcode.parsing.SourceFileReader;
 import com.myujinn.tekcode.parsing.SourcePurifier;
 
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  *  L1 --  A line should correspond to one statement.
  */
-public class OneStatement {
+public class OneStatement extends Rule {
 
     public static int patternCounter(String string, String pattern) {
         int counter = 0;
@@ -35,7 +36,7 @@ public class OneStatement {
         return counter;
     }
 
-    public static void check(File file) {
+    public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
 
         if (fileContents == null || fileContents.isEmpty())
@@ -49,7 +50,9 @@ public class OneStatement {
                 MistakePrinter.major("L1 -- A line should correspond to only one statement.", file.getName(), i + 1);
             else if (line.contains("malloc") && line.contains("!= NULL")) //we all did it, now it's forbidden :^)
                 MistakePrinter.major("L1 -- A line should correspond to only one statement.", file.getName(), i + 1);
-            else if (countCharOccurences(line, ';') > 1)
+            else if (countCharOccurences(line, ';') > 1 && !line.contains("for")) //#dirtyfixnumber20323
+                MistakePrinter.major("L1 -- A line should correspond to only one statement.", file.getName(), i + 1);
+            else if (countCharOccurences(line, ';') > 3 && line.contains("for")) //#dirtyfixnumber20324
                 MistakePrinter.major("L1 -- A line should correspond to only one statement.", file.getName(), i + 1);
             else if (line.contains("if (") && line.contains("return "))
                 MistakePrinter.major("L1 -- A line should correspond to only one statement.", file.getName(), i + 1);

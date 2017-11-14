@@ -1,6 +1,7 @@
 package com.myujinn.tekcode.checker.minor;
 
 import com.myujinn.tekcode.MistakePrinter;
+import com.myujinn.tekcode.checker.Rule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,11 +10,11 @@ import java.io.*;
 /**
  *  G2 -- One and only one empty line should seperate declaration of functions
  */
-public class LineFunctionSeparation {
+public class LineFunctionSeparation extends Rule {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(LineFunctionSeparation.class);
 
-    public static void check(File file) {
+    public void check(File file) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             boolean inFunction = false;
             boolean checkNextLineIfFunction = false;

@@ -1,13 +1,14 @@
 package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
+import com.myujinn.tekcode.checker.Rule;
 
 import java.io.File;
 
 /**
  *  O4 - snake_case convention on file names.
  */
-public class FileNaming {
+public class FileNaming extends Rule {
 
     private static String removeExtension(File file) {
         String fileName = file.getName();
@@ -33,7 +34,7 @@ public class FileNaming {
         return true;
     }
 
-    public static void check(File file) {
+    public void check(File file) {
         if (!isSnakeCase(removeExtension(file))) {
             MistakePrinter.major("O4 -- File name is not following the snake_case convention.", file.getName());
         }
