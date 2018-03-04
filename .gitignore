@@ -1,4 +1,18 @@
-.idea/*
-target/*
-tekCode.iml
-packr/*
+packr/
+
+# Eclipse
+.classpath
+.project
+.settings/
+ 
+# Intellij
+.idea/
+*.iml
+*.iws
+ 
+# Mac
+.DS_Store
+ 
+# Maven
+log/
+target/
