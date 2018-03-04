@@ -21,7 +21,7 @@ public class IndentationStyle extends Rule {
         int i = 0;
         while (i < line.length() && line.charAt(i) == '\t')
             i++;
-        return line.charAt(i) == ' ';
+        return i < line.length() && line.charAt(i) == ' ';
     }
 
     public void check(File file) {
