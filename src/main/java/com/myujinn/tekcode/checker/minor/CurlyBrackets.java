@@ -1,12 +1,10 @@
 package com.myujinn.tekcode.checker.minor;
 
 import com.myujinn.tekcode.MistakePrinter;
-import com.myujinn.tekcode.checker.Rule;
+import com.myujinn.tekcode.parsing.SourcePurifier;
+import com.myujinn.tekcode.rule.Rule;
 import com.myujinn.tekcode.parsing.FunctionParser;
 import com.myujinn.tekcode.parsing.SourceFileReader;
-import com.myujinn.tekcode.parsing.SourcePurifier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.List;
@@ -16,6 +14,10 @@ import java.util.List;
  *  Closing curly brackets should always be alone.
  */
 public class CurlyBrackets extends Rule {
+
+    public CurlyBrackets() {
+        ruleName = this.getClass().getSimpleName();
+    }
 
     private static void checkFunctionDeclaration(List<String> fileContents, File file) {
         List<String> functionPrototypes = FunctionParser.getFunctionPrototypes(fileContents);
@@ -39,11 +41,11 @@ public class CurlyBrackets extends Rule {
         boolean inFunction = false;
 
         for (int i = 0; i < fileContents.size(); i++) {
-            String line = SourcePurifier.purify(fileContents.get(i));
+            String line = SourcePurifier.removeWhitespaces(SourcePurifier.purify(fileContents.get(i)));
 
             //closing brackets should always always be alone on their line.
-            if (SourcePurifier.removeWhitespaces(line).contains("}") && SourcePurifier.removeWhitespaces(line).length() != 1)
-                MistakePrinter.minor("L4 -- Closing curly bracket should always be alone on their line", file.getName());
+            if (inFunction && line.contains("}") && !line.contains("else") && line.length() != 1)
+                MistakePrinter.minor("L4 -- Closing curly bracket should always be alone on their line", file.getName(), i + 1);
 
             //entered a function because first character is a curly boi; a bit lazy but it works since other rules says to
             //put the curly boi on a new line so it will eventually be detected

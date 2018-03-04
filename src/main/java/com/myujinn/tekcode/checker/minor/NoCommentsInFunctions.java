@@ -1,7 +1,7 @@
 package com.myujinn.tekcode.checker.minor;
 
 import com.myujinn.tekcode.MistakePrinter;
-import com.myujinn.tekcode.checker.Rule;
+import com.myujinn.tekcode.rule.Rule;
 import com.myujinn.tekcode.parsing.SourceFileReader;
 import com.myujinn.tekcode.parsing.SourcePurifier;
 
@@ -12,6 +12,10 @@ import java.util.List;
  *  F6 -- No comments inside a function
  */
 public class NoCommentsInFunctions extends Rule {
+
+    public NoCommentsInFunctions() {
+        ruleName = this.getClass().getSimpleName();
+    }
 
     public void check(File file) {
         List<String> fileContent = SourceFileReader.readFile(file);

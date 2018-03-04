@@ -1,10 +1,8 @@
 package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
-import com.myujinn.tekcode.checker.Rule;
+import com.myujinn.tekcode.rule.Rule;
 import com.myujinn.tekcode.parsing.SourceFileReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.List;
@@ -13,6 +11,10 @@ import java.util.List;
  *  G1 -- Source files should always start with the header of the school.
  */
 public class FileHeader extends Rule {
+
+    public FileHeader() {
+        ruleName = this.getClass().getSimpleName();
+    }
 
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);

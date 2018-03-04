@@ -1,7 +1,7 @@
 package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
-import com.myujinn.tekcode.checker.Rule;
+import com.myujinn.tekcode.rule.Rule;
 import com.myujinn.tekcode.parsing.SourceFileReader;
 
 import java.io.File;
@@ -11,6 +11,10 @@ import java.util.List;
  *  F4 -- A function should not exceed 20 lines
  */
 public class TwentyLines extends Rule {
+
+    public TwentyLines() {
+        ruleName = this.getClass().getSimpleName();
+    }
 
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);

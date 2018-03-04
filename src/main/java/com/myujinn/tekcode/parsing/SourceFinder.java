@@ -36,14 +36,14 @@ public class SourceFinder {
         }
 
         for (File file : filesInFolder) {
-            if (file.isDirectory() && '.' != file.getName().charAt(0)) {
+            if (file.isDirectory() && '.' != file.getName().charAt(0) && !"cmake-build-debug".equals(file.getName())) {
                 pathList.addAll(findSourceFiles(file.toPath()));
             }
             else if (file.isFile()) {
-                if ("c".equals(getFileExtension(file)))  // || "h".equals(getFileExtension(file)))
+                if ("c".equals(getFileExtension(file)) || "h".equals(getFileExtension(file)))
                     pathList.add(file.toPath());
-                else if (!"".equals(getFileExtension(file)))
-                    MistakePrinter.minor("O2 -- Is not a source file in your project.", file.getName());
+                /*else if (!"".equals(getFileExtension(file)))
+                    MistakePrinter.minor("O2 -- Is not a source file in your project.", file.getName());*/
             }
         }
 

@@ -1,27 +1,36 @@
 package com.myujinn.tekcode.checker;
 
+import com.myujinn.tekcode.rule.Rule;
+import com.myujinn.tekcode.rule.RuleFactory;
+
 import java.io.File;
 import java.util.List;
 
-public class FileAnalyzer {
+public class FileAnalyzer implements Runnable {
 
     private File file;
+    private RuleFactory ruleFactory;
 
-    private RuleFactory ruleFactory = new RuleFactory();
-
-    public FileAnalyzer(File file) {
+    public FileAnalyzer(File file, RuleFactory ruleFactory) {
         this.file = file;
+        this.ruleFactory = ruleFactory;
     }
 
-    public void analyze() {
-        List<String> rulesNameList = Rules.getRules();
+    private boolean isSource() {
+        String name = file.getName();
+        return name.charAt(name.length() - 1) == 'c';
+    }
 
-        for (String ruleName : rulesNameList) {
-            try {
-                ruleFactory.getRule(ruleName).check(file);
-            } catch (BadRuleException e) {
-                e.printStackTrace();
-            }
+    public void run() {
+        List<Rule> ruleList;
+
+        if (isSource())
+            ruleList = ruleFactory.getRulesSource();
+        else
+            ruleList = ruleFactory.getRulesHeader();
+
+        for (Rule rule : ruleList) {
+            rule.check(file);
         }
     }
 

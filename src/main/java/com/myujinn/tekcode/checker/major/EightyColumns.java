@@ -1,11 +1,8 @@
 package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
-import com.myujinn.tekcode.checker.Rule;
+import com.myujinn.tekcode.rule.Rule;
 import com.myujinn.tekcode.parsing.SourceFileReader;
-import com.myujinn.tekcode.parsing.SourcePurifier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.List;
@@ -14,6 +11,10 @@ import java.util.List;
  *  F3 -- Length of a line shouldn't exceed 80 columns
  */
 public class EightyColumns extends Rule {
+
+    public EightyColumns() {
+        ruleName = this.getClass().getSimpleName();
+    }
 
     private static int charactersToColumns(String string) {
         int columns = 0;

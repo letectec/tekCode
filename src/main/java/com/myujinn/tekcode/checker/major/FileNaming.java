@@ -1,7 +1,7 @@
 package com.myujinn.tekcode.checker.major;
 
 import com.myujinn.tekcode.MistakePrinter;
-import com.myujinn.tekcode.checker.Rule;
+import com.myujinn.tekcode.rule.Rule;
 
 import java.io.File;
 
@@ -9,6 +9,10 @@ import java.io.File;
  *  O4 - snake_case convention on file names.
  */
 public class FileNaming extends Rule {
+
+    public FileNaming() {
+        ruleName = this.getClass().getSimpleName();
+    }
 
     private static String removeExtension(File file) {
         String fileName = file.getName();
@@ -21,6 +25,20 @@ public class FileNaming extends Rule {
 
     public static boolean isSnakeCase(String string) {
         // checks uppercase letters
+        if (!string.equals(string.toLowerCase()))
+            return false;
+
+        // checks special chars, didn't use regex cuz too slow and not understandable code, might be
+        // dirty code but at least it's readable and reliable. feel free to improve here
+        final char[] chars = string.toCharArray();
+        for (char c : chars) {
+            if (!Character.isLetterOrDigit(c) && c != '_')
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean isScreamingSnakeCase(String string) {
         if (!string.equals(string.toLowerCase()))
             return false;
 

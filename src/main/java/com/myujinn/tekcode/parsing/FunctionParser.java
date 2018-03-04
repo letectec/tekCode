@@ -50,17 +50,17 @@ public class FunctionParser {
                     }
                 }
                 //reconstruct function declaration
-                String function = "";
+                StringBuilder function = new StringBuilder();
                 int k = functionDeclarationList.size() - 1;
 
                 do {
-                    function += SourcePurifier.removeWhitespaces(functionDeclarationList.get(k)) + "\n";
+                    function.append(SourcePurifier.removeWhitespaces(functionDeclarationList.get(k))).append("\n");
                     k--;
                 } while (k >= 0);
 
                 //to avoid global declarations of arrays
-                if (function.contains("(") && function.contains(")"))
-                    prototypeList.add(function);
+                if (function.toString().contains("(") && function.toString().contains(")"))
+                    prototypeList.add(function.toString());
             }
         }
 

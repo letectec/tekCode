@@ -1,6 +1,6 @@
 package com.myujinn.tekcode.checker.major;
 
-import com.myujinn.tekcode.checker.Rule;
+import com.myujinn.tekcode.rule.Rule;
 import com.myujinn.tekcode.parsing.FunctionParser;
 import com.myujinn.tekcode.MistakePrinter;
 import com.myujinn.tekcode.parsing.SourceFileReader;
@@ -13,11 +13,13 @@ import java.util.List;
  */
 public class ArgumentsPolicy extends Rule {
 
-    private String name = this.getClass().getName();
+    public ArgumentsPolicy() {
+        ruleName = this.getClass().getSimpleName();
+    }
 
     private String getArguments(String functionDeclaration) {
         return functionDeclaration.substring(functionDeclaration.indexOf("("),
-                functionDeclaration.lastIndexOf(")"));
+                functionDeclaration.lastIndexOf(")") + 1);
     }
 
     private int countArguments(String arguments) {
