@@ -1,4 +1,5 @@
 packr/
+testFolder/
 
 # Eclipse
 .classpath
