@@ -27,8 +27,8 @@ $> ./tekCode $project_directory
 <img alt="Info" src="/icons/info.png" width="12" height="12"/> = info (or implicit) rule<br/>
 
 ### Rules
-<img alt="Useless" src="/icons/useless.png" width="12" height="12"/> O1 -- Delivery folder should only have files required for compilation<br/>
-<img alt="Useless" src="/icons/useless.png" width="12" height="12"/> O2 -- Sources should be .c or .h<br/>
+<img alt="Useless" src="/icons/not_supported.png" width="12" height="12"/> O1 -- Delivery folder should only have files required for compilation<br/>
+<img alt="Useless" src="/icons/not_supported.png" width="12" height="12"/> O2 -- Sources should be .c or .h<br/>
 <img alt="Unsupported" src="/icons/not_supported.png" width="12" height="12"/> O3 -- Source file should match an entity<br/>
 <img alt="Major" src="/icons/major.png" width="12" height="12"/> O4 -- File names should be snake_case<br/>
 <img alt="Major" src="/icons/major.png" width="12" height="12"/> G1 -- Standard file header of the school<br/>
@@ -58,4 +58,4 @@ $> ./tekCode $project_directory
 <img alt="Unsupported" src="/icons/not_supported.png" width="12" height="12"/> A2 -- Most accurate type possible<br/>
 <img alt="Unsupported" src="/icons/not_supported.png" width="12" height="12"/> H1 -- Header file content<br/>
 <img alt="Minor" src="/icons/minor.png" width="12" height="12"/> H2 -- Header protected from double-inclusion<br/>
-<img alt="Useless" src="/icons/useless.png" width="12" height="12"/> H3 -- No macros for constants, one statement<br/>
+<img alt="Useless" src="/icons/not_supported.png" width="12" height="12"/> H3 -- No macros for constants, one statement<br/>
