@@ -27,7 +27,7 @@ public class GotoSpaghettiCode extends Rule {
         for (int i = 0; i < fileContents.size(); i++) {
             String line = SourcePurifier.purify(fileContents.get(i));
 
-            if (line.contains("goto"))
+            if (line.contains("goto "))
                 MistakePrinter.minor("C3 -- goto keyword.", file.getName(), i + 1);
         }
     }

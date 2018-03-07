@@ -26,13 +26,15 @@ public class DoubleInclusion extends Rule {
 
         boolean isIfNDef = false;
 
-        for (int i = 0; i < fileContents.size(); i++) {
-            String line = SourcePurifier.purify(fileContents.get(i));
+        for (String fileContent : fileContents) {
+            String line = SourcePurifier.purify(fileContent);
 
             if (line.contains("#ifndef"))
                 isIfNDef = true;
-            else if (isIfNDef && line.contains("#define"))
+            else if (isIfNDef && line.contains("#") && line.contains("define"))
                 return;
+            else
+                isIfNDef = false;
             if (line.contains("#pragma") && line.contains("once"))
                 return;
         }

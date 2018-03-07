@@ -19,15 +19,15 @@ public class SpaceAfterKeyword extends Rule {
     }
 
     /*
-        * Yes there are missing operators and keywords.
-        * I know. You don't need to report it, but this is just to warn people.
-        * There can be problems with those I didn't include.
-        * For example, the keyword "/" can be flagged for
-        * "#include <sys/linux.h>" and it's not wrong.
-        * The other operators shouldn't be that common as variable names and stuff.
-        * So it's okay to keep them as to warn the programmer that this is fault.
-        * End of PSA.
-        */
+     * Yes there are missing operators and keywords.
+     * I know. You don't need to report it, but this is just to warn people.
+     * There can be problems with those I didn't include.
+     * For example, the keyword "/" can be flagged for
+     * "#include <sys/linux.h>" and it's not wrong.
+     * The other operators shouldn't be that common as variable names and stuff.
+     * So it's okay to keep them as to warn the programmer that this is fault.
+     * End of PSA.
+     */
     private final static List<String> keywordsOperators = Arrays.asList(
             "return\\(", "while", "if", "for", "else", "goto", "switch", "case", "do",  // keywords except sizeof
             "\\+", "-", "\\*", "\\%",  // arithmetic operators

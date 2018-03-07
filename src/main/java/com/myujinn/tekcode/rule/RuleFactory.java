@@ -61,5 +61,9 @@ public class RuleFactory {
 
         ruleListHeader.add(new NamingIdentifiers());
         ruleListSource.add(new ChainedTernaries());
+
+        ruleListHeader.add(new DoubleInclusion());
+
+        ruleListSource.add(new ConstGlobal());
     }
 }
