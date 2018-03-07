@@ -8,13 +8,15 @@ If you have any suggestions, bug fixes or improvements in any way, feel free to 
 
 ## How to use
 
+Get the latest release here : https://github.com/Myuujinn/tekCode/releases
+
 Jar version :
-```
+```bash
 $> java -jar tekCode.jar $project_directory
 ```
 
 Standalone executable:
-```
+```bash
 $> ./tekCode $project_directory
 ```
 
