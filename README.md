@@ -8,6 +8,12 @@ If you have any suggestions, bug fixes or improvements in any way, feel free to 
 
 ## How to use
 
+Jar version :
 ```
 $> java -jar tekCode.jar $project_directory
+```
+
+Standalone executable:
+```
+$> ./tekCode $project_directory
 ```
