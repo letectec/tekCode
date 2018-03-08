@@ -51,7 +51,7 @@ public class SpaceAfterKeyword extends Rule {
             if (i == -1)
                 break;
             if (hasSpaceAfterPattern(line, pattern, i))
-                MistakePrinter.minor("L3 -- Should have a space after " + pattern +  " keyword/operator", file.getName(), lineNumber + 1);
+                MistakePrinter.minor("L3 -- Should have a space after " + pattern.replaceAll("\\\\", "") +  " keyword/operator", file.getName(), lineNumber + 1);
             line = line.substring(i + pattern.length());
         }
     }
