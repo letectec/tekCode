@@ -20,6 +20,18 @@ Standalone executable:
 $> ./tekCode $project_directory
 ```
 
+## Developer note
+
+There are thousands of norm checkers for Epitech's coding style. Oh wait nope. It was updated in 2017/2018 and now there's all obsolete.
+This is my take at it. I think I got it pretty close.
+
+Most norm checkers sucks. They're usually scripts (in your preferred scripting language) made by Epitech students. This one is no exception.
+
+Except it's in a real language (not a good one though). With proper syntax and commenting support. tekCode will purge all comments it finds so less false positives are detected. Win-Win.
+
+
+The code is... alright I guess. It's just parsing and parsing is hard to write properly. At least it does it's job. 
+
 ## Coding-style errors
 
 ### Captions
