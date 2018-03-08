@@ -14,16 +14,17 @@ class TekCode {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TekCode.class);
 
-    void checkArgs(String[] args) {
+    boolean checkArgs(String[] args) {
         if (args.length == 0) {
             LOGGER.error("No directory specified.");
-            throw new IllegalArgumentException();
+            return false;
         }
 
         if (!SourceFinder.isDirectory(args[0])) {
             LOGGER.error(args[0] + " is not a valid directory.");
-            throw new IllegalArgumentException();
+            return false;
         }
+        return true;
     }
 
     void disclaimer() {
@@ -37,7 +38,8 @@ class TekCode {
     }
 
     void launch(String[] args) {
-        checkArgs(args);
+        if (!checkArgs(args))
+            return;
 
         disclaimer();
 
