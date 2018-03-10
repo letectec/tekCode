@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class GotoSpaghettiCode extends Rule {
 
-    public GotoSpaghettiCode() {
-        ruleName = this.getClass().getName();
-    }
-
     @Override
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);

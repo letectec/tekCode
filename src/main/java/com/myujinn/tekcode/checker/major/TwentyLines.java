@@ -12,10 +12,6 @@ import java.util.List;
  */
 public class TwentyLines extends Rule {
 
-    public TwentyLines() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
 

@@ -10,10 +10,6 @@ import java.io.File;
  */
 public class FileNaming extends Rule {
 
-    public FileNaming() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     private static String removeExtension(File file) {
         String fileName = file.getName();
         int pos = fileName.lastIndexOf(".");

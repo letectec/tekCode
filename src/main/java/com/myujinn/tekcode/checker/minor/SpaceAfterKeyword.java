@@ -14,10 +14,6 @@ import java.util.List;
  */
 public class SpaceAfterKeyword extends Rule {
 
-    public SpaceAfterKeyword() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     /*
      * Yes there are missing operators and keywords.
      * I know. You don't need to report it, but this is just to warn people.

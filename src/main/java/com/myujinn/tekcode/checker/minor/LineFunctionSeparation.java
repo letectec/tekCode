@@ -15,12 +15,6 @@ import java.util.List;
  */
 public class LineFunctionSeparation extends Rule {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(LineFunctionSeparation.class);
-
-    public LineFunctionSeparation() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
 

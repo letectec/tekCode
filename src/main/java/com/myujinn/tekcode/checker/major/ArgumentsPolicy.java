@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class ArgumentsPolicy extends Rule {
 
-    public ArgumentsPolicy() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     private String getArguments(String functionDeclaration) {
         return functionDeclaration.substring(functionDeclaration.indexOf("("),
                 functionDeclaration.lastIndexOf(")") + 1);

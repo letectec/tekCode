@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class DoubleInclusion extends Rule {
 
-    public DoubleInclusion() {
-        ruleName = this.getClass().getName();
-    }
-
     @Override
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);

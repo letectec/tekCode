@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class OneStatement extends Rule {
 
-    public OneStatement() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     public static int patternCounter(String string, String pattern) {
         int counter = 0;
         String newString = string;

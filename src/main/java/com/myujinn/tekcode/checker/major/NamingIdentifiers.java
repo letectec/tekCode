@@ -16,10 +16,6 @@ public class NamingIdentifiers extends Rule {
     private final String ruleErrorTypedef = "V1 -- Typedefs should end with \"_t\".";
     private final String ruleErrorMacro = "V1 -- Macros should be in screaming SNAKE_CASE.";
 
-    public NamingIdentifiers() {
-        ruleName = this.getClass().getName();
-    }
-
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
 

@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class IndentationStyle extends Rule {
 
-    public IndentationStyle() {
-        ruleName = this.getClass().getName();
-    }
-
     private boolean hasBadIndentation(String line) {
         int i = 0;
         while (i < line.length() && line.charAt(i) == '\t')

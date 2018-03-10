@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class NoCommentsInFunctions extends Rule {
 
-    public NoCommentsInFunctions() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     public void check(File file) {
         List<String> fileContent = SourceFileReader.readFile(file);
 

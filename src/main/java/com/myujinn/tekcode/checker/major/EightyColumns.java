@@ -12,10 +12,6 @@ import java.util.List;
  */
 public class EightyColumns extends Rule {
 
-    public EightyColumns() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     private static int charactersToColumns(String string) {
         int columns = 0;
 

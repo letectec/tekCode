@@ -12,10 +12,6 @@ import java.util.List;
  */
 public class FileHeader extends Rule {
 
-    public FileHeader() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     public void check(File file) {
         List<String> fileContents = SourceFileReader.readFile(file);
 

@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class FunctionNaming extends Rule {
 
-    public FunctionNaming() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     private static String purifyLineSeparator(String string) {
         return string.replaceAll("\n","");
     }

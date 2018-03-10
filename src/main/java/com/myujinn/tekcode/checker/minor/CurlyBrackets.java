@@ -15,10 +15,6 @@ import java.util.List;
  */
 public class CurlyBrackets extends Rule {
 
-    public CurlyBrackets() {
-        ruleName = this.getClass().getSimpleName();
-    }
-
     private static void checkFunctionDeclaration(List<String> fileContents, File file) {
         List<String> functionPrototypes = FunctionParser.getFunctionPrototypes(fileContents);
 
