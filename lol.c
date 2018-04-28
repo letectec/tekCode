@@ -1,0 +1,23 @@
+int main()
+{
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+lol;
+}
