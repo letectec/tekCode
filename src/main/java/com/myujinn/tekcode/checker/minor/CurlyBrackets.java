@@ -41,7 +41,7 @@ public class CurlyBrackets extends Rule {
             String line = SourcePurifier.removeWhitespaces(SourcePurifier.purify(fileContents.get(i)));
 
             //closing brackets should always always be alone on their line.
-            if (inFunction && line.contains("}") && !line.contains("else") && !line.contains("while") && line.length() != 1)
+            if (inFunction && line.contains("}") && !line.contains("else") && !line.contains("while") && !line.contains(";") && line.length() != 1)
                 MistakePrinter.minor("L4 -- Closing curly bracket should always be alone on their line", file.getName(), i + 1);
 
             //entered a function because first character is a curly boi; a bit lazy but it works since other rules says to
