@@ -26,7 +26,7 @@ public class ChainedTernaries extends Rule {
 
             if (OneStatement.countCharOccurrences(line, '?') > 1
                     && OneStatement.countCharOccurrences(line, ':') > 1)
-                MistakePrinter.info("C2 -- nested or chained ternaries.", file.getName(), i);
+                MistakePrinter.info("C2 -- nested or chained ternaries.", file.getName(), i + 1);
         }
     }
 }
