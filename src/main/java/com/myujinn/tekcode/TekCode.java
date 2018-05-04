@@ -30,7 +30,7 @@ class TekCode {
     void disclaimer() {
         System.out.println("-------------");
         System.out.println(" Disclaimer: ");
-        System.out.println(" tekCode 1.1.2 is just an Epitech coding style checker.");
+        System.out.println(" tekCode 1.1.3 is just an Epitech coding style checker.");
         System.out.println(" It CAN make mistakes. (and it will)");
         System.out.println(" You can contribute on my GitHub if it does that too often.");
         System.out.println(" https://github.com/Myuujinn/tekCode");
