@@ -46,7 +46,7 @@ public class OneStatement extends Rule {
             String line = SourcePurifier.purify(fileContents.get(i));
 
             //checking for all statement errors
-            if ((patternCounter(line, " = ") > 1)
+            if ((!line.contains("for") && patternCounter(line, " = ") > 1)
             || (line.contains("malloc") && line.contains("!= NULL")) //we all did it, now it's forbidden :^)
             || (countCharOccurrences(line, ';') > 1 && !line.contains("for")) //#dirtyfixnumber20323
             || (countCharOccurrences(line, ';') > 3 && line.contains("for")) //#dirtyfixnumber20324
